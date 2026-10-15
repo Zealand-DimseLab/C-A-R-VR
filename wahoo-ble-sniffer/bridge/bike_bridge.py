@@ -64,6 +64,8 @@ try:
     from bleak import BleakClient, BleakScanner
     HAVE_BLEAK = True
 except Exception:
+    # BleakClient = None
+    # BleakScanner = None
     HAVE_BLEAK = False
 
 
@@ -468,6 +470,8 @@ class WahooBridgeServer:
                         except Exception:
                             pass
 
+                    async with BleakClient(target, disconnected_callback=_on_disc) as client:
+                        LOG.info("Conntected to BLE device %s", getattr(target, "address", target))
                     try:
                         set_disc = getattr(client, "set_disconnected_callback", None)
                         if callable(set_disc):

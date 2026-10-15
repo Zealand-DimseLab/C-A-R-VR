@@ -4,8 +4,8 @@ using CARDataLib;
 using System.Text;
 
 public class ByteHandlerService {
-    private CarDataSqliteChunkRepository carDataChunkRepository;
-    public ByteHandlerService(CarDataSqliteChunkRepository carDataChunkRepository){
+    private CarDataChunkRepository carDataChunkRepository;
+    public ByteHandlerService(CarDataChunkRepository carDataChunkRepository){
         this.carDataChunkRepository = carDataChunkRepository;
     }
     public async Task ByteScenarios(byte[] unityarray){
