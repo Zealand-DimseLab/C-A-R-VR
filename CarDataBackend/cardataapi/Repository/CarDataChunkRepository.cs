@@ -199,4 +199,68 @@ public class CarDataChunkRepository{
             throw new Exception(e.Message);
         }
     }
+    public async Task AddRightBrake(List<RightBrake> rightBrakes, int userId){
+        try
+        {
+            SqlConnection connection = HelperMethods.NewConnection(connectionString);
+            using (connection)
+            {
+                connection.Open();
+                DataTable table = new DataTable();
+                SqlBulkCopy bulk = new SqlBulkCopy(connection)
+                {
+                    DestinationTableName = "dbo.RightBrake",
+                    BatchSize = 1000,
+                    BulkCopyTimeout = 60,
+                    EnableStreaming = true
+                };
+                bulk.ColumnMappings.Add("Brake", "Brake");
+                bulk.ColumnMappings.Add("BrakeTime", "BrakeTime");
+                table.Columns.Add("Brake", typeof(bool));
+                table.Columns.Add("BrakeTime", typeof(DateTime));
+                foreach (RightBrake rb in rightBrakes)
+                {
+                    table.Rows.Add(rb.RightBraking);
+                    table.Rows.Add(rb.BrakeTime);
+                }
+                await bulk.WriteToServerAsync(table);
+            }
+        }
+        catch (SqlException e)
+        {
+            throw new Exception(e.Message);
+        }
+    }
+    public async Task AddLeftBrake(List<LeftBrake> leftBrakes, int userId){
+        try
+        {
+            SqlConnection connection = HelperMethods.NewConnection(connectionString);
+            using (connection)
+            {
+                connection.Open();
+                DataTable table = new DataTable();
+                SqlBulkCopy bulk = new SqlBulkCopy(connection)
+                {
+                    DestinationTableName = "dbo.LeftBrake",
+                    BatchSize = 1000,
+                    BulkCopyTimeout = 60,
+                    EnableStreaming = true
+                };
+                bulk.ColumnMappings.Add("Brake", "LeftBraking");
+                bulk.ColumnMappings.Add("BrakeTime", "BrakeTime");
+                table.Columns.Add("Brake", typeof(bool));
+                table.Columns.Add("BrakeTime", typeof(DateTime));
+                foreach (LeftBrake lb in leftBrakes)
+                {
+                    table.Rows.Add(lb.LeftBraking);
+                    table.Rows.Add(lb.BrakeTime);
+                }
+                await bulk.WriteToServerAsync(table);
+            }
+        }
+        catch (SqlException e)
+        {
+            throw new Exception(e.Message);
+        }
+    }
 }
