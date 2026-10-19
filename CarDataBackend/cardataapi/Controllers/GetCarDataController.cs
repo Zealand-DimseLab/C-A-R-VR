@@ -16,7 +16,7 @@ namespace cardataapi.Controllers{
         [HttpGet]
         [Authorize]
         [Route("tpid")]
-        public IActionResult Get([FromQuery] int? tpid){
+        public IActionResult Get([FromQuery] int tpid){
             if(tpid == null)
                 return BadRequest();
 
