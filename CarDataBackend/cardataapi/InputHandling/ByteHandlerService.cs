@@ -65,22 +65,10 @@ public class ByteHandlerService {
         List<HeadTransform> hTfs = new List<HeadTransform>();
         foreach(var chunk in chunks){
             if(chunk.Length <= 0) continue;
-            if(chunk.Length < 7) throw new ArgumentOutOfRangeException("Chunk skal være minimum 7");
-            double rw = double.Parse(chunk[0]);
-            double rz = double.Parse(chunk[1]);
-            double rx = double.Parse(chunk[2]);
-            double ry = double.Parse(chunk[3]);
-            double pz = double.Parse(chunk[4]);
-            double px = double.Parse(chunk[5]);
-            double py = double.Parse(chunk[6]);
+            if(chunk.Length < 2) throw new ArgumentOutOfRangeException("Chunk skal være minimum 2");
+            double lr = double.Parse(chunk[0]);
             HeadTransform htf = new HeadTransform();
-            htf.RotW = rw;
-            htf.RotZ = rz;
-            htf.RotX = rx;
-            htf.RotY = ry;
-            htf.PosZ = pz;
-            htf.PosX = px;
-            htf.PosY = py;
+            htf.LookRotation = lr;
             hTfs.Add(htf);
         }
         await carDataChunkRepository.AddHeadTransform(hTfs, id);
@@ -108,7 +96,7 @@ public class ByteHandlerService {
             rightBrakes.Add(rb);
         }
         await carDataChunkRepository.AddLeftBrake(leftBrakes, id);
-        await carDataChunkRepository.AddRigthBrake(rightBrakes, id);
+        await carDataChunkRepository.AddRightBrake(rightBrakes, id);
     }
     public async Task BytePulseData(byte[] unityarray){
         ValidateByteArray(unityarray);

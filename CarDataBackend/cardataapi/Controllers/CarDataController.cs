@@ -25,19 +25,9 @@ namespace cardataapi.Controllers
             this.chunkRepository = chunkRepository;
             // this.carDataSqliteRepository = carDataSqliteRepository;
         }
-        // GET: api/<PostController>
-        // [HttpGet]
-        // public IActionResult Get()
-        // {
-            // List<User> users = carDataRepository.GetUsers();
-            // if(users != null)
-            //     return Ok(users);
-            // else
-            //     return BadRequest();
-        // }
-        [HttpPost]
-        [Route("postLiteData")]
-        public async Task<IActionResult> PostBikeData(){
+       [HttpPost]
+       [Route("logbikedata")]
+       public async Task<IActionResult> PostBD(){
            using var ms = new MemoryStream();
            await Request.Body.CopyToAsync(ms);
 
@@ -46,185 +36,61 @@ namespace cardataapi.Controllers
            if(incomingBytes.Length == 0 || incomingBytes == null) return BadRequest();
            await byteHandlerService.ByteBikeData(incomingBytes);
            return Ok("Bikedata tilføjet i db!");
-        }
-        [HttpPost]
-        [Route("logbikedata")]
-        public async Task<IActionResult> PostBikeData([FromForm] IncomingFile incomingFile, int userId){
-            if(incomingFile.newTestFile == null || incomingFile.newTestFile.Length == 0){
-                return BadRequest("File fail");
-            }
-            var folderpath = Path.Combine(Directory.GetCurrentDirectory(), "TestUsers");
-            var filepath = Path.Combine("TestUsers", incomingFile.newTestFile.FileName);
+       }
+       [HttpPost]
+       [Route("logscenario")]
+       public async Task<IActionResult> PostScenarios(){
+           using var ms = new MemoryStream();
+           await Request.Body.CopyToAsync(ms);
 
-            Directory.CreateDirectory(folderpath);
-            FileStream stream = new FileStream(filepath, FileMode.Create);
-            using(stream){
-                await incomingFile.newTestFile.CopyToAsync(stream);
-            }
-            string fileContent = await System.IO.File.ReadAllTextAsync(filepath);
-            if(fileContent.Length == 0 && fileContent == null)
-                return NoContent();
-            string[] stringSplit = fileContent.Split(new[] {"\r\n", "\r", "\n"}, StringSplitOptions.None);
+           byte[] incomingBytes = ms.ToArray();
 
-            var chunks = stringSplit.Chunk(3);
+           if(incomingBytes.Length == 0 || incomingBytes == null) return BadRequest();
+           await byteHandlerService.ByteScenarios(incomingBytes);
+           return Ok("Scenariedata tilføjet i db!");
+       }
+       [HttpPost]
+       [Route("loghtf")]
+       public async Task<IActionResult> PostHTF(){
 
-            List<BikeData> bikeDatas = new List<BikeData>();
+           using var ms = new MemoryStream();
+           await Request.Body.CopyToAsync(ms);
 
-            foreach (string[] chunk in chunks){
-                if(chunk.Length < 3) {
-                    return BadRequest();
-                };
-                    var yRot = double.Parse(chunk[0]);
-                    double curbSide = double.Parse(chunk[1]);
-                    double spee = double.Parse(chunk[2]);
-                    BikeData p = new BikeData();
-                    p.HandleRotationY = yRot;
-                    p.DistanceCurbSide = curbSide;
-                    p.Speed = spee;
-                    bikeDatas.Add(p);
-                    chunkRepository.AddBikeData(bikeDatas, userId);
-            }
-            return Ok("Did good!");
-        }
-        [HttpPost]
-        [Route("logpulse")]
-        public async Task<IActionResult> PostPulseData([FromForm] IncomingFile incomingFile, int userId){
-            if(incomingFile.newTestFile == null || incomingFile.newTestFile.Length == 0){
-                return BadRequest("File fail");
-            }
-            var folderpath = Path.Combine(Directory.GetCurrentDirectory(), "TestUsers");
-            var filepath = Path.Combine("TestUsers", incomingFile.newTestFile.FileName);
+           byte[] incomingBytes = ms.ToArray();
 
-            Directory.CreateDirectory(folderpath);
-            FileStream stream = new FileStream(filepath, FileMode.Create);
-            using(stream){
-               await incomingFile.newTestFile.CopyToAsync(stream);
-            }
-            string fileContent = await System.IO.File.ReadAllTextAsync(filepath);
-            if(fileContent.Length == 0 && fileContent == null)
-                return NoContent();
-            string[] stringSplit = fileContent.Split("\n");
+           if(incomingBytes.Length == 0 || incomingBytes == null) return BadRequest();
+           await byteHandlerService.ByteHeadTransform(incomingBytes);
+           return Ok("HeadTransformData tilføjet i db!");
+       }
+       [HttpPost]
+       [Route("logarduino")]
+       public async Task<IActionResult> PostArduino(){
 
-            List<PulseData> newPulseList = new List<PulseData>();
+           using var ms = new MemoryStream();
+           await Request.Body.CopyToAsync(ms);
 
-            foreach (string content in stringSplit){
-                int pulse = int.Parse(content);
-                PulseData p = new PulseData();
-                p.Pulse = pulse;
-                newPulseList.Add(p);
-            }
-            chunkRepository.AddPulseData(newPulseList, userId);
+           byte[] incomingBytes = ms.ToArray();
 
-            return Ok("Did good!");
-        }
-        [HttpPost]
-        [Route("userp")]
-        public IActionResult Post([FromBody] User user)
-        {
-            if (user != null)
-            {
-                User testuser = carDataRepository.AddFirstInstanceOfUser(user);
-                return Ok(testuser);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        //POST api/<PostController>
-        [HttpPost]
-        [Route("postsession")]
-        public IActionResult Post([FromBody] int userId)
-        {
-            Session newSession = carDataRepository.AddSession(userId);
-            if(newSession != null)
-            {
-                return Ok("Session startet: " + newSession.Id);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-
-        // PUT api/<PostController>/5
-        [HttpPost]
-        [Route("postscenario")]
-        public IActionResult Post([FromBody] Scenario scenario, int sessionid)
-        {
-            Scenario newscenario = carDataRepository.AddScenario(scenario, sessionid);
-            if(newscenario != null)
-            {
-                return Ok(newscenario);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        [HttpPost]
-        [Route("postpulsedata")]
-        public IActionResult Post([FromBody] PulseData pulseData, int userId)
-        {
-            PulseData newpulseData = carDataRepository.AddPulseData(pulseData, userId);
-            if (newpulseData != null)
-            {
-                return Ok(newpulseData);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        [HttpPost]
-        [Route("posttimecheck")]
-        public IActionResult Post([FromBody] TimeCheck timeCheck)
-        {
-            TimeCheck newtimecheck = carDataRepository.AddTimeCheck(timeCheck);
-            if (newtimecheck != null)
-            {
-                return Ok(newtimecheck);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        [HttpPost]
-        [Route("postbikedata")]
-        public IActionResult Post([FromBody] BikeData bikeData, int userId)
-        {
-            BikeData newbikeDate = carDataRepository.AddBikeData(bikeData, userId);
-            if (newbikeDate != null)
-            {
-                return Ok(newbikeDate);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        [HttpPost]
-        [Route("postheadtransform")]
-        public IActionResult Post([FromBody] HeadTransform headTransform, int userId)
-        {
-            HeadTransform newheadTransform = carDataRepository.AddHeadTransform(headTransform, userId);
-            if (headTransform != null)
-            {
-                return Ok(headTransform);
-            }
-            else
-            {
-                return BadRequest();
-            }
-        }
-        [HttpPost]
-        [Route("pfs")]
-        public IActionResult Post([FromBody] IFormFile file){
-            if(file == null || file.Length == 0) return BadRequest();
-            //Mangler resten af indlæsningen.
-            return Ok(file);
-        }
+           if(incomingBytes.Length == 0 || incomingBytes == null) return BadRequest();
+           await byteHandlerService.ByteArduino(incomingBytes);
+           return Ok("Arduinodata tilføjet i db!");
+       }
+       [HttpPost]
+       //Endpoint
+       [Route("logpulse")]
+       public async Task<IActionResult> PostPulseData(){
+            //Strømmen af data og hentningen af det fra Requesten
+           using var ms = new MemoryStream();
+           await Request.Body.CopyToAsync(ms);
+            //Omsættes til byte array.
+           byte[] incomingBytes = ms.ToArray();
+            //Check if null or 0 
+           if(incomingBytes.Length == 0 || incomingBytes == null) return BadRequest();
+           //Hvis der er data så sender vi det videre til vore service lag.
+           await byteHandlerService.BytePulseData(incomingBytes);
+           //Hvis alt går som det skal får Unity en OK 200 tilbage.
+           return Ok("Pulse data indsat.");
+       }
     }
 }
 

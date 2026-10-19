@@ -142,24 +142,12 @@ public class CarDataChunkRepository{
                     EnableStreaming = true
                 };
                 bulk.ColumnMappings.Add("UserId", "UserId");
-                bulk.ColumnMappings.Add("RotW", "RotW");
-                bulk.ColumnMappings.Add("RotZ", "RotZ");
-                bulk.ColumnMappings.Add("RotX", "RotX");
-                bulk.ColumnMappings.Add("RotY", "RotY");
-                bulk.ColumnMappings.Add("PosX", "PosX");
-                bulk.ColumnMappings.Add("PosY", "PosY");
-                bulk.ColumnMappings.Add("PosZ", "PosZ");
+                bulk.ColumnMappings.Add("LookRotation", "LookRotation");
                 table.Columns.Add("UserId", typeof(int));
-                table.Columns.Add("RotW", typeof(double));
-                table.Columns.Add("RotZ", typeof(double));
-                table.Columns.Add("RotX", typeof(double));
-                table.Columns.Add("RotY", typeof(double));
-                table.Columns.Add("PosX", typeof(double));
-                table.Columns.Add("PosY", typeof(double));
-                table.Columns.Add("PosZ", typeof(double));
+                table.Columns.Add("LookRotation", typeof(double));
                 foreach (HeadTransform hTF in headTransforms)
                 {
-                    table.Rows.Add(userId, hTF.RotW, hTF.RotZ, hTF.RotX, hTF.RotY, hTF.PosX, hTF.PosY, hTF.PosZ);
+                    table.Rows.Add(userId, hTF.LookRotation);
                 }
                 await bulk.WriteToServerAsync(table);
             }
