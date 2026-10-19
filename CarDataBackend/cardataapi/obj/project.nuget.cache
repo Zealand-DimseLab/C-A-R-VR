@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "y/yz7nUuFXc=",
+  "dgSpecHash": "f+W7kW+I7o8=",
   "success": true,
   "projectFilePath": "C:\\Users\\nqvis\\Desktop\\bikebridge\\C-A-R-VR\\CarDataBackend\\cardataapi\\cardataapi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nqvis\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.21\\microsoft.aspnetcore.openapi.9.0.21.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.18\\microsoft.bcl.cryptography.9.0.18.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.data.sqlclient\\7.1.1\\microsoft.data.sqlclient.7.1.1.nupkg.sha512",
