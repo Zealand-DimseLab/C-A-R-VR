@@ -1,0 +1,34 @@
+name: Build and deploy to Simply
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Find projekt
+        shell: pwsh
+        run: |
+          $proj = Get-ChildItem -Recurse -Filter *.csproj | Where-Object { $_.Name -notmatch 'Test' } | Select-Object -First 1
+          Write-Host "Bruger projekt: $($proj.FullName)"
+          "PROJ=$($proj.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Publish
+        run: dotnet publish "${{ env.PROJ }}" -c Release -r win-x86 --self-contained true -o ./publish
+
+      - name: Deploy til Simply
+        uses: rasmusbuchholdt/simply-web-deploy@2.1.0
+        with:
+          website-name: ${{ secrets.WEBSITE_NAME }}
+          server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
+          server-username: ${{ secrets.SERVER_USERNAME }}
+          server-password: ${{ secrets.SERVER_PASSWORD }}
+          source-path: \publish\
