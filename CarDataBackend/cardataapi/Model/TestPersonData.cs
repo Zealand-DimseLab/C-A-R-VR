@@ -7,13 +7,7 @@ public class TestPersonData
     public DateTime? ScenarioEnd { get; set; }
     public float? CycleToCarDistance { get; set; }
 
-    public float? PosX { get; set; }
-    public float? PosY { get; set; }
-    public float? PosZ { get; set; }
-    public float? RotW { get; set; }
-    public float? RotX { get; set; }
-    public float? RotY { get; set; }
-    public float? RotZ { get; set; }
+    public float? LookRotation { get; set; }
 
     public float? Speed { get; set; }
     public float? HandleRotationY { get; set; }
@@ -29,7 +23,7 @@ public class TestPersonData
 
     public TestPersonData(string? scenarioName, DateTime? scenarioStart, DateTime? scenarioEnd,
     float? cycleToCarDistance,
-    float? posX, float? posY, float? posZ, float? rotW, float? rotX, float? rotY, float? rotZ,
+    float? lookRotation,
     float? speed, float? handleRotationY, float? distanceCurbSide,
     bool? leftBraking, DateTime? leftBrakeTime,
     bool? rightBraking, DateTime? rightBrakeTime,
@@ -39,13 +33,7 @@ public class TestPersonData
     ScenarioStart = scenarioStart;
     ScenarioEnd = scenarioEnd;
     CycleToCarDistance = cycleToCarDistance;
-    PosX = posX;
-    PosY = posY;
-    PosZ = posZ;
-    RotW = rotW;
-    RotX = rotX;
-    RotY = rotY;
-    RotZ = rotZ;
+    LookRotation = lookRotation;
     Speed = speed;
     HandleRotationY = handleRotationY;
     DistanceCurbSide = distanceCurbSide;

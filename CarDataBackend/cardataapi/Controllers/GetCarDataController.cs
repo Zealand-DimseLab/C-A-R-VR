@@ -16,15 +16,15 @@ namespace cardataapi.Controllers{
         [HttpGet]
         [Authorize]
         [Route("tpid")]
-        public IActionResult Get([FromQuery] int tpid){
-            if(tpid == null)
+        public async Task<IActionResult> Get([FromQuery] int tpid){
+            if(tpid == 0)
                 return BadRequest();
 
-            TestPersonData tpd = getTestPersonRepo.GetTPD(tpid);
-            if(tpd == null)
+            List<TestPersonData>? tpds = await getTestPersonRepo.GetTPD(tpid);
+            if(tpds == null)
                 return BadRequest();
 
-            return Ok(tpd);
+            return Ok(tpds);
         }
 
     }
