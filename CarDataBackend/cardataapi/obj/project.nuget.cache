@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "f+W7kW+I7o8=",
+  "dgSpecHash": "GtI2At/y3m0=",
   "success": true,
   "projectFilePath": "C:\\Users\\nqvis\\Desktop\\bikebridge\\C-A-R-VR\\CarDataBackend\\cardataapi\\cardataapi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nqvis\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
-    "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.21\\microsoft.aspnetcore.openapi.9.0.21.nupkg.sha512",
+    "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.22\\microsoft.aspnetcore.openapi.9.0.22.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.18\\microsoft.bcl.cryptography.9.0.18.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.data.sqlclient\\7.1.1\\microsoft.data.sqlclient.7.1.1.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.data.sqlclient.extensions.abstractions\\7.1.1\\microsoft.data.sqlclient.extensions.abstractions.7.1.1.nupkg.sha512",
@@ -37,7 +37,10 @@
     "C:\\Users\\nqvis\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.18\\system.security.cryptography.pkcs.9.0.18.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.18\\system.security.cryptography.protecteddata.9.0.18.nupkg.sha512",
-    "C:\\Users\\nqvis\\.nuget\\packages\\system.threading.ratelimiting\\9.0.18\\system.threading.ratelimiting.9.0.18.nupkg.sha512"
+    "C:\\Users\\nqvis\\.nuget\\packages\\system.threading.ratelimiting\\9.0.18\\system.threading.ratelimiting.9.0.18.nupkg.sha512",
+    "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\9.0.14\\microsoft.netcore.app.runtime.win-x86.9.0.14.nupkg.sha512",
+    "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\9.0.14\\microsoft.windowsdesktop.app.runtime.win-x86.9.0.14.nupkg.sha512",
+    "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\9.0.14\\microsoft.aspnetcore.app.runtime.win-x86.9.0.14.nupkg.sha512"
   ],
   "logs": []
 }
