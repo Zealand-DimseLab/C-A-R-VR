@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cardataapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44b2003158aed57d7d1bbe2c6a68df7be409d3d2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6fe0dd3aba58496a8e225669924ad1cad37fac31")]
 [assembly: System.Reflection.AssemblyProductAttribute("cardataapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cardataapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

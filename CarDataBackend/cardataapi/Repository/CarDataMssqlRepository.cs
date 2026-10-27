@@ -97,7 +97,7 @@ public class CarDataMssqlRepository{
     //         throw new Exception(e.Message);
     //         }
     // }
-    public User AddFirstInstanceOfUser(User user)
+    public User InsertQuaterOne(User user)
     {
         try
         {
@@ -105,13 +105,46 @@ public class CarDataMssqlRepository{
             {
                 connection.Open();
 
-                string sql = "INSERT INTO Users (TestPersonNumber, Age, Gender) VALUES (@testpersonnumber, @age, @gender)";
+                string sql = "INSERT INTO Users (TestPersonNumber, Name, Gender, Age, Q1, Q1Comment, Q2, Q3, Q4) VALUES (@testpersonnumber, @name, @gender, @age, @q1, @q1comment, @q2, @q3, @q4)";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     HelperMethods.BindValueInt(command, "@testpersonnumber", user.TestPersonNumber);
-                    HelperMethods.BindValueInt(command, "@age", user.Age);
+                    HelperMethods.BindValueString(command, "@name", user.Name);
                     HelperMethods.BindValueString(command, "@gender", user.Gender);
+                    HelperMethods.BindValueString(command, "@age", user.Age);
+                    HelperMethods.BindValueString(command, "@q1", user.Q1);
+                    HelperMethods.BindValueString(command, "@q1comment", user.Q1Comment);
+                    HelperMethods.BindValueString(command, "@q2", user.Q2);
+                    HelperMethods.BindValueString(command, "@q3", user.Q3);
+                    HelperMethods.BindValueString(command, "@q4", user.Q4);
+                    command.ExecuteNonQuery();
+                }
+            }
+            return user;
+        }
+        catch (SqlException e)
+        {
+            throw new Exception(e.Message);
+        }
+    }
+
+    public User InsertQuaterTwo(User user)
+    {
+        try
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string sql = "INSERT INTO Users (Q5, Q6, Q7, Q8, OtherRemarks) VALUES (@q5, @q6, @q7, @q8, @otherremarks)";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    HelperMethods.BindValueString(command, "@q5", user.Q5);
+                    HelperMethods.BindValueString(command, "@q6", user.Q6);
+                    HelperMethods.BindValueString(command, "@q7", user.Q7);
+                    HelperMethods.BindValueString(command, "@q8", user.Q8);
                     command.ExecuteNonQuery();
                 }
             }

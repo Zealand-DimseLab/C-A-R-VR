@@ -91,6 +91,22 @@ namespace cardataapi.Controllers
            //Hvis alt går som det skal får Unity en OK 200 tilbage.
            return Ok("Pulse data indsat.");
        }
+       [HttpPost]
+       [Route("quaterone")]
+       public async Task<IActionResult> QuaterOne(User quaterone){
+           if(quaterone == null)
+               return BadRequest();
+            User q1user = carDataRepository.InsertQuaterOne(quaterone); 
+            return Ok(q1user);
+       }
+       [HttpPost]
+       [Route("quatertwo")]
+       public async Task<IActionResult> QuaterTwo(User quatertwo){
+           if(quatertwo == null)
+               return BadRequest();
+            User q2user = carDataRepository.InsertQuaterTwo(quatertwo); 
+            return Ok(q2user);
+       }
     }
 }
 
