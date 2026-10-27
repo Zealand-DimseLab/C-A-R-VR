@@ -143,11 +143,14 @@ public class CarDataChunkRepository{
                 };
                 bulk.ColumnMappings.Add("UserId", "UserId");
                 bulk.ColumnMappings.Add("LookRotation", "LookRotation");
+                bulk.ColumnMappings.Add("LookTime", "LookTime");
                 table.Columns.Add("UserId", typeof(int));
                 table.Columns.Add("LookRotation", typeof(double));
+                table.Columns.Add("LookTime", typeof(DateTime));
                 foreach (HeadTransform hTF in headTransforms)
                 {
                     table.Rows.Add(userId, hTF.LookRotation);
+                    table.Rows.Add(userId, hTF.LookTime);
                 }
                 await bulk.WriteToServerAsync(table);
             }

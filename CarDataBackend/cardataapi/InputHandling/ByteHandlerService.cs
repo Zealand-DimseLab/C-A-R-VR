@@ -61,12 +61,13 @@ public class ByteHandlerService {
         string[] splitString = fromByteToString.Split("|");
         string firstLine = splitString[0];
         int.TryParse(firstLine, out int id);
-        var chunks = splitString.Skip(1).Chunk(7);
+        var chunks = splitString.Skip(1).Chunk(2);
         List<HeadTransform> hTfs = new List<HeadTransform>();
         foreach(var chunk in chunks){
             if(chunk.Length <= 0) continue;
-            if(chunk.Length < 2) throw new ArgumentOutOfRangeException("Chunk skal være minimum 2");
+            // if(chunk.Length < 2) throw new ArgumentOutOfRangeException("Chunk skal være minimum 2");
             double lr = double.Parse(chunk[0]);
+            DateTime time = DateTime.Parse(chunk[1]);
             HeadTransform htf = new HeadTransform();
             htf.LookRotation = lr;
             hTfs.Add(htf);
