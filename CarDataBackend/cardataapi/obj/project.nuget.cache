@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GtI2At/y3m0=",
+  "dgSpecHash": "f+W7kW+I7o8=",
   "success": true,
   "projectFilePath": "C:\\Users\\nqvis\\Desktop\\bikebridge\\C-A-R-VR\\CarDataBackend\\cardataapi\\cardataapi.csproj",
   "expectedPackageFiles": [
@@ -37,10 +37,7 @@
     "C:\\Users\\nqvis\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.18\\system.security.cryptography.pkcs.9.0.18.nupkg.sha512",
     "C:\\Users\\nqvis\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.18\\system.security.cryptography.protecteddata.9.0.18.nupkg.sha512",
-    "C:\\Users\\nqvis\\.nuget\\packages\\system.threading.ratelimiting\\9.0.18\\system.threading.ratelimiting.9.0.18.nupkg.sha512",
-    "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\9.0.14\\microsoft.netcore.app.runtime.win-x86.9.0.14.nupkg.sha512",
-    "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\9.0.14\\microsoft.windowsdesktop.app.runtime.win-x86.9.0.14.nupkg.sha512",
-    "C:\\Users\\nqvis\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\9.0.14\\microsoft.aspnetcore.app.runtime.win-x86.9.0.14.nupkg.sha512"
+    "C:\\Users\\nqvis\\.nuget\\packages\\system.threading.ratelimiting\\9.0.18\\system.threading.ratelimiting.9.0.18.nupkg.sha512"
   ],
   "logs": []
 }

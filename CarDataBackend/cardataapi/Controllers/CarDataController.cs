@@ -107,6 +107,14 @@ namespace cardataapi.Controllers
             User q2user = carDataRepository.InsertQuaterTwo(quatertwo); 
             return Ok(q2user);
        }
+       [HttpPost]
+       [Route("notes")]
+       public async Task<IActionResult> InsertNotes(Notes notes){
+           if(notes == null)
+               return BadRequest();
+            Notes y = carDataRepository.InsertNotes(notes); 
+            return Ok(y);
+       }
     }
 }
 

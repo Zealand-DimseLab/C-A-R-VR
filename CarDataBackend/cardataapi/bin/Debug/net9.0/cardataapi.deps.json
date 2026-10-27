@@ -9,7 +9,7 @@
       "cardataapi/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.2.0",
-          "Microsoft.AspNetCore.OpenApi": "9.0.21",
+          "Microsoft.AspNetCore.OpenApi": "9.0.22",
           "Microsoft.Data.SqlClient": "7.1.1",
           "Microsoft.Data.Sqlite": "7.0.20",
           "cardatalib": "1.0.0.0"
@@ -26,14 +26,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.OpenApi/9.0.21": {
+      "Microsoft.AspNetCore.OpenApi/9.0.22": {
         "dependencies": {
           "Microsoft.OpenApi": "1.6.31"
         },
         "runtime": {
           "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "assemblyVersion": "9.0.21.0",
-            "fileVersion": "9.0.2126.50509"
+            "assemblyVersion": "9.0.22.0",
+            "fileVersion": "9.0.2226.52314"
           }
         }
       },
@@ -567,12 +567,12 @@
       "path": "bcrypt.net-next/4.2.0",
       "hashPath": "bcrypt.net-next.4.2.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.OpenApi/9.0.21": {
+    "Microsoft.AspNetCore.OpenApi/9.0.22": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UNKsxZ1NEkYXnAWyig/12o23nh4eq51/Ax9jP0VI4fk2ENV4nvDG184Yaf9/NycWW2beW1Oc/7kjiXmfuyDdHg==",
-      "path": "microsoft.aspnetcore.openapi/9.0.21",
-      "hashPath": "microsoft.aspnetcore.openapi.9.0.21.nupkg.sha512"
+      "sha512": "sha512-xeQqUCszTsGXnyJwGDzWfEgWGBwNZ3FQH/C8J4OAdTugpmvg/OLoqw5kMqjaHzrW3O/EaEk8jUHu2ffRsagboA==",
+      "path": "microsoft.aspnetcore.openapi/9.0.22",
+      "hashPath": "microsoft.aspnetcore.openapi.9.0.22.nupkg.sha512"
     },
     "Microsoft.Bcl.Cryptography/9.0.18": {
       "type": "package",

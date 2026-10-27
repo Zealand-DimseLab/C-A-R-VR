@@ -29,7 +29,7 @@ public class Program
         builder.Services.AddSingleton<GetTestPersonData>(new GetTestPersonData(cardatadb));
         // builder.Services.AddSingleton<FileHandlerService>();
         // builder.Services.AddSingleton<StringHandlerService>();
-        // builder.Services.AddSingleton<CarDataMssqlRepository>(new CarDataMssqlRepository(cardatadb));
+        builder.Services.AddSingleton<CarDataMssqlRepository>(new CarDataMssqlRepository(cardatadb));
         // builder.Services.AddSingleton<CarDataChunkRepository>(new CarDataChunkRepository(cardatadb));
 
         // builder.WebHost.UseUrls("https://0.0.0.0:5000");
