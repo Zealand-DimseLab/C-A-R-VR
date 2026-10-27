@@ -137,7 +137,7 @@ public class CarDataMssqlRepository{
             {
                 connection.Open();
 
-                string sql = "INSERT INTO Users (Q5, Q6, Q7, Q8, OtherRemarks) VALUES (@q5, @q6, @q7, @q8, @otherremarks)";
+                string sql = "INSERT INTO Users (Q5, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13) VALUES (@q5, @q6, @q7, @q8, @q9, @q10, @q11, @q12, @q13)";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -145,6 +145,11 @@ public class CarDataMssqlRepository{
                     HelperMethods.BindValueString(command, "@q6", user.Q6);
                     HelperMethods.BindValueString(command, "@q7", user.Q7);
                     HelperMethods.BindValueString(command, "@q8", user.Q8);
+                    HelperMethods.BindValueString(command, "@q9", user.Q9);
+                    HelperMethods.BindValueString(command, "@q10", user.Q10);
+                    HelperMethods.BindValueString(command, "@q11", user.Q11);
+                    HelperMethods.BindValueString(command, "@q12", user.Q12);
+                    HelperMethods.BindValueString(command, "@q13", user.Q13);
                     command.ExecuteNonQuery();
                 }
             }
