@@ -70,6 +70,7 @@ public class ByteHandlerService {
             DateTime time = DateTime.Parse(chunk[1]);
             HeadTransform htf = new HeadTransform();
             htf.LookRotation = lr;
+            htf.LookTime = time;
             hTfs.Add(htf);
         }
         await carDataChunkRepository.AddHeadTransform(hTfs, id);
